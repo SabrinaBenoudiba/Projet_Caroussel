@@ -13,7 +13,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 2vw; /* ou la valeur que tu veux */
+    padding-top: 1.5vw;
     position: relative;
     background: #eee;
 }
@@ -55,8 +55,8 @@
 }
 
 .img-container {
-  width: 60vw;
-  height: 60vw;
+  width: 50vw;
+  height: 50vw;
 }
 
 img {
@@ -94,7 +94,7 @@ img {
 button {
   background: none;
   border: 0;
-  font-size: 10vw;
+  font-size: 8vw;
   border-radius: 50%;
   background: black;
   width: 100%;
@@ -178,8 +178,8 @@ button:hover {
 /* screen is wider than tall */
 @media (min-aspect-ratio: 99/100) { 
   .img-container {
-    width: 60vh;
-    height: 60vh;
+    width: 50vh;
+    height: 50vh;
   }
   
   .next-prev-btns {
@@ -190,13 +190,13 @@ button:hover {
 
   .prev-btn-container,
   .next-btn-container {
-    height: 8vh;
-    width: 8vh;
+    height: 7vh;
+    width: 7vh;
   }
   
   button {
-    font-size: 10vh;
-    padding-bottom: 1.25vh;
+    font-size: 9vh;
+    padding-bottom: 1.5vh;
   }
   
   .img-nav-container {

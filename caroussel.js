@@ -1,18 +1,21 @@
-const images = document.querySelectorAll('.img-container img')
-const totalImages = images.length;
+// Sélectionne toutes les images du carrousel
+let images = document.querySelectorAll('.img-container img')
+let totalImages = images.length;
 
-// ...le reste du code...
+// Sélectionne les boutons précédent et suivant
+let prevBtn = document.querySelector('.prev-btn')
+let nextBtn = document.querySelector('.next-btn')
 
-const prevBtn = document.querySelector('.prev-btn')
-const nextBtn = document.querySelector('.next-btn')
+// Sélectionne tous les boutons de navigation (petits ronds sous le carrousel)
+let selectedImgBtns = document.querySelectorAll('.img-nav-item')
 
-const selectedImgBtns = document.querySelectorAll('.img-nav-item')
-
+// Indice de l'image actuellement affichée
 let currentImgId = 0;
 
-const hideAllImages = () => {
+// Fonction pour masquer toutes les images
+let hideAllImages = () => {
   images.forEach(img => {
-    // hide all images
+    // Si l'image est visible, on la masque
     if (img.classList[0] === 'visible') {
       img.classList.remove('visible')
       img.classList.add('hidden')
@@ -20,24 +23,29 @@ const hideAllImages = () => {
   })
 }
 
-const traverseImages = (direction) => {
+// Fonction pour naviguer entre les images (précédente ou suivante)
+let traverseImages = (direction) => {
   hideAllImages()
   
+  // Met à jour l'indice de l'image courante selon la direction
   if (direction === 'prev') {
     currentImgId = currentImgId ? (currentImgId - 1) % totalImages : totalImages - 1
   } else {
     currentImgId = (currentImgId + 1) % totalImages
   }
   
+  // Affiche la nouvelle image courante
   images[currentImgId].classList.remove('hidden')
   images[currentImgId].classList.add('visible')
   
+  // Met à jour la sélection des boutons de navigation
   selectedImgBtns.forEach(btn => btn.classList.remove('img-nav-item-selected'))
   selectedImgBtns[currentImgId].classList.add('img-nav-item-selected')
 }
 
-const handleBtnClick = (btn, i) => {
-  // not sure about this fuckery, but it works
+// Fonction appelée quand on clique sur un bouton de navigation (rond)
+let handleBtnClick = (btn, i) => {
+  // Si le bouton est déjà sélectionné, on ne fait rien
   if (btn.classList.forEach(btnClass => {
     if (btnClass === 'img-nav-item-selected') {
       return true
@@ -46,6 +54,7 @@ const handleBtnClick = (btn, i) => {
     return
   }
   
+  // Met à jour la sélection des boutons
   selectedImgBtns.forEach(btn => btn.classList.remove('img-nav-item-selected'))
   btn.classList.add('img-nav-item-selected')
   hideAllImages()
@@ -54,9 +63,11 @@ const handleBtnClick = (btn, i) => {
   images[currentImgId].classList.add('visible')
 }
 
+// Ajoute les événements de clic sur les boutons précédent et suivant
 prevBtn.addEventListener('click', () => traverseImages('prev'))
 nextBtn.addEventListener('click', () => traverseImages('next'))
 
+// Ajoute les événements de clic sur les boutons de navigation (ronds)
 selectedImgBtns.forEach((btn, i) => {
   btn.addEventListener('click', () => handleBtnClick(btn, i))
 })
