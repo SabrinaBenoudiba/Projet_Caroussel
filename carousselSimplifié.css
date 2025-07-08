@@ -1,0 +1,29 @@
+.header{
+    display: flex;
+    margin-left: 6em;
+}
+
+.logo{
+    width: 5em;
+    height: 6em;
+}
+
+.imgMiel{
+    width : 12em;
+}
+
+#picturesPur {
+    width: 25em;
+    display: block;
+}
+
+.button{
+    margin-left: 10em;
+    background-color: rgba(146, 69, 41, 0.653);
+    width: 10em;
+}
+
+.button:hover{
+  cursor: pointer;
+  background-color: whitesmoke;
+}
